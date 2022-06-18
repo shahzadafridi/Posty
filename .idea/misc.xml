@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/java/com/realtime/realtimeblogs/MainActivity.kt" value="0.335" />
+        <entry key="app/src/main/java/com/realtime/realtimeblogs/ui/theme/screens/PostDetail.kt" value="0.165" />
       </map>
     </option>
   </component>
