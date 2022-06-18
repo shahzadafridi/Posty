@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import com.realtime.realtimeblogs.ui.theme.PostyTheme
 import com.realtime.realtimeblogs.ui.theme.items.PostCard
+import com.realtime.realtimeblogs.ui.theme.screens.PostDetail
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,7 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     PostyTheme {
-        PostCard()
+        PostDetail()
     }
 }
 
