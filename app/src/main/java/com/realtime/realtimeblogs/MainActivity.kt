@@ -10,21 +10,27 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposableTargetMarker
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.realtime.realtimeblogs.ui.theme.BorderColor
 import com.realtime.realtimeblogs.ui.theme.PostyTheme
+import com.realtime.realtimeblogs.ui.theme.RoundRectShape
+import com.realtime.realtimeblogs.ui.theme.items.PostCard
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,40 +54,12 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@OptIn(ExperimentalUnitApi::class)
 @Preview(showBackground = true)
+@OptIn(ExperimentalUnitApi::class)
 @Composable
 fun DefaultPreview() {
     PostyTheme {
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp)
-
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = "Profile Image",
-                modifier = Modifier
-                    .size(40.dp,40.dp)
-
-            )
-
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-            ) {
-                Text(
-                    text = "Imran Khan team has won FATF case ",
-                    style = MaterialTheme.typography.subtitle1
-                )
-                Text(
-                    text = "A big win to Pakistan",
-                    style = MaterialTheme.typography.subtitle2
-                )
-            }
-        }
-
+        PostCard()
     }
 }
+
