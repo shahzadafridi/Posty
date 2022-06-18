@@ -5,26 +5,27 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = Posty300,
+    primaryVariant = Posty700,
+    onPrimary = Color.Black,
+    secondary = Posty300,
+    onSecondary = Color.Black,
+    error = Posty200,
+    background = Color.Black
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
+    primary = Posty700,
+    primaryVariant = Posty900,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    secondary = Posty700,
+    secondaryVariant = Posty900,
+    onSecondary = Color.White,
+    error = Posty800,
+    background = Color.White
 )
 
 @Composable
@@ -37,8 +38,9 @@ fun PostyTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable 
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = PostyTypography,
         shapes = Shapes,
         content = content
     )
 }
+
