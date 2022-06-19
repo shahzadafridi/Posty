@@ -1,15 +1,11 @@
-package com.realtime.realtimeblogs.ui.theme.screens
+package com.realtime.realtimeblogs.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,35 +13,28 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.realtime.realtimeblogs.R
+import com.realtime.realtimeblogs.data.Repository
 import com.realtime.realtimeblogs.ui.theme.RoundRectShape
-import com.realtime.realtimeblogs.ui.theme.components.InsetAwareTopAppBar
+import com.realtime.realtimeblogs.ui.components.InsetAwareTopAppBar
+import com.realtime.realtimeblogs.ui.components.topAppBarIcon
+import com.realtime.realtimeblogs.ui.components.topAppBarTitle
 
-@Preview
 @Composable
-fun PostDetail() {
+fun PostDetailScreen(
+    postsRepository: Repository,
+    scaffoldState: ScaffoldState,
+    postId: String?,
+    onBack: () -> Unit
+) {
     Scaffold(
+        scaffoldState = scaffoldState,
         topBar = {
             InsetAwareTopAppBar(
-                title = {
-                    Text(
-                        text = "Test Tile",
-                        style = MaterialTheme.typography.subtitle1,
-                        color = LocalContentColor.current
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Back"
-                        )
-                    }
-                }
+                title = topAppBarTitle(title = "Post Detail"),
+                navigationIcon = topAppBarIcon(onClickCallback = onBack)
             )
         },
         bottomBar = {}

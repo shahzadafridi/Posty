@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package com.realtime.realtimeblogs.ui.theme.components
+package com.realtime.realtimeblogs.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.contentColorFor
-import androidx.compose.material.primarySurface
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.insets.navigationBarsPadding
+import org.w3c.dom.Text
 
 /**
  * A wrapper around [TopAppBar] which uses [Modifier.statusBarsPadding] to shift the app bar's
@@ -58,6 +57,36 @@ fun InsetAwareTopAppBar(
             backgroundColor = Color.Transparent,
             contentColor = contentColor,
             elevation = 0.dp,
+            modifier = modifier
+                .navigationBarsPadding(bottom = false)
+                .statusBarsPadding(),
          )
+    }
+}
+
+@Composable
+fun topAppBarTitle(title: String): @Composable (() -> Unit) {
+    return {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.subtitle1,
+            color = LocalContentColor.current,
+        )
+    }
+}
+
+@Composable
+fun topAppBarIcon(
+    icon: ImageVector = Icons.Filled.ArrowBack,
+    desc: String? = "",
+    onClickCallback: () -> Unit
+): @Composable (() -> Unit) {
+    return {
+        IconButton(onClick = onClickCallback) {
+            Icon(
+                imageVector = icon,
+                contentDescription = desc
+            )
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.realtime.realtimeblogs.ui.theme.items
+package com.realtime.realtimeblogs.ui.items
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.dp
 import com.realtime.realtimeblogs.R
 import com.realtime.realtimeblogs.ui.theme.BorderColor
@@ -23,11 +24,13 @@ import com.realtime.realtimeblogs.ui.theme.RoundRectShape
 
 
 @Composable
-fun PostCard(){
+fun PostCard(
+    navigateToPostDetail: (String) -> Unit
+){
     Card(
         modifier = Modifier
             .background(color = MaterialTheme.colors.background)
-            .padding(vertical = 16.dp, horizontal = 8.dp),
+            .padding(vertical = 8.dp, horizontal = 8.dp),
         border = BorderStroke(0.5.dp, BorderColor),
         elevation = 1.dp
     ) {
@@ -36,7 +39,7 @@ fun PostCard(){
         ) {
             PostHeaderSection()
             Spacer(modifier = Modifier.padding(top = 16.dp))
-            PostContentSection()
+            PostContentSection(navigateToPostDetail)
             Spacer(modifier = Modifier.padding(top = 16.dp))
             PostFooterSection()
         }
@@ -76,10 +79,12 @@ fun PostHeaderSection() {
     }
 }
 
-
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PostContentSection() {
-    Surface {
+fun PostContentSection(
+    navigateToPostDetail: (String) -> Unit
+) {
+    Surface(onClick = { navigateToPostDetail.invoke("post.id") }) {
         Column {
             Text(
                 text = "Khar said the development spoke volumes about the comprehensive reforms carried out in Pakistan...",
