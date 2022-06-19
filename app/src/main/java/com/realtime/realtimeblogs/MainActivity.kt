@@ -17,6 +17,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.realtime.realtimeblogs.data.FakeRepository
 import com.realtime.realtimeblogs.navigation.PostyNavGraph
+import com.realtime.realtimeblogs.navigation.bottom.BottomNavigationBar
 import com.realtime.realtimeblogs.ui.theme.PostyTheme
 import com.realtime.realtimeblogs.ui.components.InsetAwareTopAppBar
 import com.realtime.realtimeblogs.ui.components.topAppBarTitle
@@ -24,21 +25,23 @@ import com.realtime.realtimeblogs.ui.items.PostCard
 import com.realtime.realtimeblogs.ui.screens.PostyApp
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
-          PostyApp()
-        }
-    }
-
-    @OptIn(ExperimentalUnitApi::class)
-    @Composable
-    fun DefaultPreview(innerPadding: PaddingValues) {
-        PostyTheme {
-
+            PostyApp()
         }
     }
 }
+
+@OptIn(ExperimentalUnitApi::class)
+@Composable
+fun DefaultPreview(innerPadding: PaddingValues) {
+    PostyTheme {
+
+    }
+}
+
 
 
