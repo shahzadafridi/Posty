@@ -5,10 +5,14 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.navigationBarsPadding
@@ -52,7 +56,7 @@ fun topAppBarTitle(title: String): @Composable (() -> Unit) {
         Text(
             text = title,
             style = MaterialTheme.typography.subtitle1,
-            color = LocalContentColor.current,
+            color = LocalContentColor.current
         )
     }
 }

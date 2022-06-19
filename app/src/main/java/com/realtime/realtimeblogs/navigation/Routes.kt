@@ -8,3 +8,7 @@ object MainDestinations {
     const val POST_ID_KEY = "postId"
 }
 
+
+val NonBottomNavigationRouteScreen = arrayListOf(
+    "postDetail/{postId}"
+)

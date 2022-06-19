@@ -10,6 +10,8 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.realtime.realtimeblogs.data.FakeRepository
 import com.realtime.realtimeblogs.navigation.PostyNavGraph
+import com.realtime.realtimeblogs.navigation.bottom.BottomNavigationBar
+import com.realtime.realtimeblogs.navigation.isNonBottomNavigationRoute
 import com.realtime.realtimeblogs.ui.theme.PostyTheme
 
 @Composable
@@ -26,7 +28,11 @@ fun PostyApp() {
 
             Scaffold(
                 scaffoldState = scaffoldState,
-                bottomBar = {}
+                bottomBar = {
+                    if (!isNonBottomNavigationRoute(navController = navController)) {
+                        BottomNavigationBar(navController = navController)
+                    }
+                }
             ) {
                 PostyNavGraph(
                     scaffoldPadding = it,

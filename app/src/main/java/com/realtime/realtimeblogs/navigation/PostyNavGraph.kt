@@ -4,16 +4,20 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.realtime.realtimeblogs.data.FakeRepository
 import com.realtime.realtimeblogs.data.Repository
 import com.realtime.realtimeblogs.navigation.MainDestinations.POST_ID_KEY
+import com.realtime.realtimeblogs.ui.screens.FavouriteTabScreen
 import com.realtime.realtimeblogs.ui.screens.HomeTabScreen
 import com.realtime.realtimeblogs.ui.screens.PostDetailScreen
+import com.realtime.realtimeblogs.ui.screens.SettingTabScreen
 
 
 @Composable
@@ -38,6 +42,24 @@ fun PostyNavGraph(
             )
         }
 
+        composable(MainDestinations.FAVORITE_ROUTE) {
+            FavouriteTabScreen(
+                postsRepository = FakeRepository(),
+                navigateToPostDetail = actions.navigateToPostDetail,
+                scaffoldState = scaffoldState,
+                onBack = actions.upPress,
+            )
+        }
+
+        composable(MainDestinations.SETTING_ROUTE) {
+            SettingTabScreen(
+                postsRepository = FakeRepository(),
+                navigateToPostDetail = actions.navigateToPostDetail,
+                scaffoldState = scaffoldState,
+                onBack = actions.upPress,
+            )
+        }
+
         composable("${MainDestinations.POST_DETAIL_ROUTE}/{$POST_ID_KEY}") { backStackEntry ->
             PostDetailScreen(
                 postId = backStackEntry.arguments?.getString(POST_ID_KEY),
@@ -59,4 +81,11 @@ class MainActions(navController: NavHostController) {
     val upPress: () -> Unit = {
         navController.navigateUp()
     }
+}
+
+@Composable
+public fun isNonBottomNavigationRoute(navController: NavHostController): Boolean {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route ?: ""
+    return NonBottomNavigationRouteScreen.contains(currentRoute)
 }
